@@ -1,7 +1,7 @@
 import './index.style.css';
-import sidebar from './sidebar';
-import header from './header';
-import tasks from './tasks'
+import sidebar from './components/sidebar';
+import header from './components/header';
+import tasks from './components/tasks'
 
 const initialRender = () => {
     const body = document.querySelector("body")

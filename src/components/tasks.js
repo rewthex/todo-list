@@ -1,3 +1,4 @@
+import './tasks.style.css';
 import { createElement, createTask } from '../helpers';
 
 export default (() => {

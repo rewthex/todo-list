@@ -1,11 +1,14 @@
-import { sampleTasks } from './sampleTasks'
-Object.keys(sampleTasks).forEach(key => {
-    localStorage.setItem(key, JSON.stringify(sampleTasks[key]))
-})
+import { createElement, createTask } from '../helpers';
+
 export default (() => {
+    const taskContainer = createElement('div', 'tasks')
     
-    const tasks = document.createElement('div')
-    tasks.classList.add('tasks')
-    tasks.textContent = "Here's some tasks.."
-    return tasks;
+    const tasks = localStorage
+
+    for (let i = 0; i < tasks.length; i++) {
+        const task = localStorage.getItem(i);
+        console.log(task)
+    }
+
+    return taskContainer;
 })();

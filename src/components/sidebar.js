@@ -14,7 +14,7 @@ function timeClickHandler(e) {
 	});
 
 	const activeButton = e.target;
-    activeButton.classList.add('active')
+	activeButton.classList.add('active');
 
 	const filter = activeButton.innerText;
 	const event = new CustomEvent('timeFilter', {
@@ -24,14 +24,14 @@ function timeClickHandler(e) {
 }
 
 function categoryClickHandler(e) {
-    const categoryContainer = document.querySelector('.categories');
+	const categoryContainer = document.querySelector('.categories');
 	const categoryButtons = categoryContainer.querySelectorAll('button');
 	categoryButtons.forEach((button) => {
 		button.classList.remove('active');
 	});
 
 	const activeButton = e.target;
-    activeButton.classList.add('active')
+	activeButton.classList.add('active');
 
 	const filter = activeButton.innerText;
 	const event = new CustomEvent('categoryFilter', {
@@ -53,21 +53,21 @@ export default (() => {
 	time.addEventListener('click', timeClickHandler);
 
 	const timeTitle = createElement('h1', 'time-title');
+	const allButton = createElement('button', 'all-btn', 'All');
+	allButton.classList.add('active');
 	const todayButton = createElement('button', 'today-btn', 'Today');
-    todayButton.classList.add('active')
 	const weekButton = createElement('button', 'week-btn', 'Week');
 	const monthButton = createElement('button', 'month-btn', 'Month');
-	const allButton = createElement('button', 'all-btn', 'All');
-	time.append(timeTitle, todayButton, weekButton, monthButton, allButton);
+	time.append(timeTitle, allButton, todayButton, weekButton, monthButton);
 
 	const categories = createElement('div', 'categories');
-    categories.addEventListener('click', categoryClickHandler)
+	categories.addEventListener('click', categoryClickHandler);
 
 	categoryNames.forEach((categoryName) => {
 		const category = createElement('button', 'category', categoryName);
-        if (categoryName === 'All') {
-            category.classList.add('active')
-        }
+		if (categoryName === 'All') {
+			category.classList.add('active');
+		}
 		categories.appendChild(category);
 	});
 

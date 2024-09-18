@@ -1,14 +1,12 @@
 import './index.style.css';
 import sidebar from './components/sidebar';
 import header from './components/header';
-import tasks from './components/tasks'
+import tasks from './components/tasks';
+import './sampleTasks';
 
 const initialRender = () => {
-    const body = document.querySelector("body")
-
-    body.appendChild(sidebar);
-    body.appendChild(header);
-    body.appendChild(tasks);
-}
+	const body = document.querySelector('body');
+	body.append(sidebar, header, tasks);
+};
 
 initialRender();

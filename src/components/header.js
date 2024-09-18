@@ -2,7 +2,7 @@ import './header.style.css'
 import { createElement } from '../helpers';
 
 export default (() => {
-	let time = 'Today';
+	let time = 'All';
 	let category = '(All)';
 
 	const headerContainer = createElement('div', 'header');

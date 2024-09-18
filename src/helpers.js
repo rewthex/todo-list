@@ -6,5 +6,7 @@ export function createElement(type, className, innerText = '') {
 }
 
 export function createTask(task) {
-    
+	const { title, description, dueDate, priority, category } = task;
+
+	console.log(title);
 }

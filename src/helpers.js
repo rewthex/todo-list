@@ -5,8 +5,11 @@ export function createElement(type, className, innerText = '') {
 	return element;
 }
 
-export function createTask(task) {
+export function createTask(index, task) {
 	const { title, description, dueDate, priority, category } = task;
 
-	console.log(title);
+	const taskDiv = createElement('div', 'task');
+	taskDiv.classList.add(`task-${index}`);
+
+	return taskDiv;
 }

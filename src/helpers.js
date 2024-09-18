@@ -22,7 +22,7 @@ export function createTask(index, task) {
 
 export function fetchUniqueCategories() {
 	const categories = new Set();
-	categories.add("All")
+	categories.add('All');
 
 	Object.values(localStorage).forEach((task) => {
 		const taskObj = JSON.parse(task);
@@ -32,10 +32,30 @@ export function fetchUniqueCategories() {
 	return categories;
 }
 
-export function filterTasksByCategory() {
-	
+export function convertLocalStorageToObject() {
+	let tasks = {};
+
+	Object.entries(localStorage).forEach((task) => {
+		const taskId = task[0];
+		const taskObj = JSON.parse(task[1]);
+		tasks[taskId] = taskObj;
+	});
+
+	return tasks;
 }
 
-export function filterTasksByTime() {
+export function filterTasksByCategory(category) {
+	let filteredTasks = {};
 
+	Object.entries(localStorage).forEach((task) => {
+		const taskId = task[0];
+		const taskObj = JSON.parse(task[1]);
+		if (taskObj.category === category) {
+			filteredTasks[taskId] = taskObj;
+		}
+	});
+
+	return filteredTasks;
 }
+
+export function filterTasksByTime() {}

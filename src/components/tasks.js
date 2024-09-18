@@ -1,15 +1,33 @@
 import './tasks.style.css';
-import { createElement, createTask } from '../helpers';
+import {
+	createElement,
+	createTask,
+	filterTasksByCategory,
+	convertLocalStorageToObject,
+} from '../helpers';
 
-export default (() => {
+export function createTasks() {
+	document.addEventListener('categoryFilter', handleCategoryChange);
+	renderTasks();
+}
+
+function renderTasks(tasks = convertLocalStorageToObject(localStorage)) {
 	const taskContainer = createElement('div', 'tasks');
 
-	for (let i = 0; i < localStorage.length; i++) {
-		const taskString = localStorage.getItem(i)
-        const taskObject = JSON.parse(taskString)
-        const taskItem = createTask(i, taskObject)
-        taskContainer.appendChild(taskItem)
-	}
+	Object.entries(tasks).forEach((task) => {
+		const taskItem = createTask(task[0], task[1]);
+		taskContainer.appendChild(taskItem);
+	});
 
-	return taskContainer;
-})();
+	document.body.appendChild(taskContainer);
+}
+
+function handleCategoryChange(e) {
+	document.querySelector('.tasks').remove();
+	const filter = e.detail.filter;
+	if (filter === 'All') {
+		return renderTasks();
+	}
+	const filteredTasks = filterTasksByCategory(filter);
+	renderTasks(filteredTasks);
+}

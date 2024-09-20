@@ -12,10 +12,19 @@ export function createTasks() {
 }
 
 function renderTasks(tasks = convertLocalStorageToObject(localStorage)) {
+	const existingTasks = document.querySelector('.tasks');
+
+	if (existingTasks) {
+		existingTasks.remove();
+	}
+
 	const taskContainer = createElement('div', 'tasks');
 
 	Object.entries(tasks).forEach((task) => {
 		const taskItem = createTask(task[0], task[1]);
+		taskItem
+			.querySelector('.delete')
+			.addEventListener('click', handleDeleteTask);
 		taskContainer.appendChild(taskItem);
 	});
 
@@ -23,11 +32,17 @@ function renderTasks(tasks = convertLocalStorageToObject(localStorage)) {
 }
 
 function handleCategoryChange(e) {
-	document.querySelector('.tasks').remove();
 	const filter = e.detail.filter;
 	if (filter === 'All') {
 		return renderTasks();
 	}
+
 	const filteredTasks = filterTasksByCategory(filter);
 	renderTasks(filteredTasks);
+}
+
+function handleDeleteTask(e) {
+	const taskId = e.currentTarget.getAttribute('data-task-index');
+	localStorage.removeItem(taskId);
+	renderTasks();
 }

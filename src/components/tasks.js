@@ -8,7 +8,7 @@ import {
 
 export function createTasks() {
 	document.addEventListener('categoryFilter', handleCategoryChange);
-	renderTasks();
+	return renderTasks();
 }
 
 function renderTasks(tasks = convertLocalStorageToObject(localStorage)) {
@@ -27,8 +27,8 @@ function renderTasks(tasks = convertLocalStorageToObject(localStorage)) {
 			.addEventListener('click', handleDeleteTask);
 		taskContainer.appendChild(taskItem);
 	});
-
-	document.body.appendChild(taskContainer);
+	
+	return taskContainer;
 }
 
 function handleCategoryChange(e) {

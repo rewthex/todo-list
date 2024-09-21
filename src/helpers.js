@@ -1,4 +1,4 @@
-import { trashIcon } from "./components/icons";
+import { trashIcon } from './components/icons';
 
 export function createElement(type, className, innerText = '') {
 	const element = document.createElement(type);
@@ -9,7 +9,7 @@ export function createElement(type, className, innerText = '') {
 
 export function createTask(index, task) {
 	const { title, description, dueDate, priority } = task;
-
+	console.log(index, task);
 	const taskDiv = createElement('div', 'task');
 	taskDiv.classList.add(`task-${index}`);
 

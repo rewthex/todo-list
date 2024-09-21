@@ -1,14 +1,14 @@
-import './tasks.style.css';
+import './Tasks.style.css';
 import {
 	createElement,
 	createTask,
 	filterTasksByCategory,
 	convertLocalStorageToObject,
-} from '../helpers';
+} from '../../utils/helpers';
 
 export function createTasks() {
 	document.addEventListener('categoryFilter', handleCategoryChange);
-	return renderTasks();
+	renderTasks();
 }
 
 function renderTasks(tasks = convertLocalStorageToObject(localStorage)) {
@@ -28,7 +28,7 @@ function renderTasks(tasks = convertLocalStorageToObject(localStorage)) {
 		taskContainer.appendChild(taskItem);
 	});
 	
-	return taskContainer;
+	return document.body.appendChild(taskContainer);
 }
 
 function handleCategoryChange(e) {

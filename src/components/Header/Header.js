@@ -1,5 +1,5 @@
-import './header.style.css';
-import { createElement } from '../helpers';
+import './Header.style.css';
+import { createElement } from '../../utils/helpers';
 
 export function createHeader() {
 	let time = 'All';

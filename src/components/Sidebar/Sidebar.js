@@ -1,6 +1,6 @@
-import './sidebar.style.css';
-import { tornadoIcon } from './icons';
-import { createElement, fetchUniqueCategories } from '../helpers';
+import './Sidebar.style.css';
+import { tornadoIcon } from '../../utils/icons';
+import { createElement, fetchUniqueCategories } from '../../utils/helpers';
 
 export function createSidebar() {
 	const sidebar = createElement('div', 'sidebar');

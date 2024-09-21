@@ -1,62 +1,70 @@
 export default (() => {
 	const tasks = {
 		0: {
-		  title: "Task 1",
-		  description: "Finish the project documentation",
-		  dueDate: "2024-09-20",
-		  priority: "green",
-		  category: "Work"
+			title: 'Complete Project Documentation',
+			description:
+				'Finish the project documentation for the new software release.',
+			dueDate: '09-20-2024',
+			priority: 'green',
+			category: 'Work',
 		},
 		1: {
-		  title: "Task 2",
-		  description: "Prepare for the team meeting",
-		  dueDate: "2024-09-18",
-		  priority: "yellow",
-		  category: "Work"
+			title: 'Prepare Team Meeting Agenda',
+			description:
+				'Create an agenda and gather materials for the upcoming team meeting.',
+			dueDate: '09-18-2024',
+			priority: 'yellow',
+			category: 'Work',
 		},
 		2: {
-		  title: "Task 3",
-		  description: "Submit the weekly report",
-		  dueDate: "2024-09-19",
-		  priority: "red",
-		  category: "Work"
+			title: 'Submit Weekly Report',
+			description:
+				'Compile and submit the weekly progress report to management.',
+			dueDate: '09-19-2024',
+			priority: 'red',
+			category: 'Work',
 		},
 		3: {
-		  title: "Task 4",
-		  description: "Review pull requests",
-		  dueDate: "2024-09-21",
-		  priority: "green",
-		  category: "Work"
+			title: 'Review Open Pull Requests',
+			description:
+				'Go through the pending pull requests and provide feedback or approvals.',
+			dueDate: '09-21-2024',
+			priority: 'green',
+			category: 'Work',
 		},
 		4: {
-		  title: "Task 5",
-		  description: "Update website content",
-		  dueDate: "2024-09-23",
-		  priority: "yellow",
-		  category: "Personal"
+			title: 'Update Personal Website Content',
+			description:
+				'Revise and add new content to the personal website, including blog posts.',
+			dueDate: '09-23-2024',
+			priority: 'yellow',
+			category: 'Personal',
 		},
 		5: {
-		  title: "Task 6",
-		  description: "Plan the marketing strategy",
-		  dueDate: "2024-09-25",
-		  priority: "red",
-		  category: "Work"
+			title: 'Plan Marketing Strategy',
+			description:
+				'Develop a new marketing strategy for the upcoming product launch.',
+			dueDate: '09-25-2024',
+			priority: 'red',
+			category: 'Work',
 		},
 		6: {
-		  title: "Task 7",
-		  description: "Fix bugs in the dashboard",
-		  dueDate: "2024-09-22",
-		  priority: "green",
-		  category: "Work"
+			title: 'Fix Dashboard Bugs',
+			description:
+				'Identify and fix bugs in the analytics dashboard for better performance.',
+			dueDate: '09-22-2024',
+			priority: 'green',
+			category: 'Work',
 		},
 		7: {
-		  title: "Task 8",
-		  description: "Conduct code review",
-		  dueDate: "2024-09-24",
-		  priority: "yellow",
-		  category: "Work"
-		}
-	  };
+			title: 'Conduct Code Review Session',
+			description:
+				'Host a code review session to improve code quality and catch issues.',
+			dueDate: '09-24-2024',
+			priority: 'yellow',
+			category: 'Work',
+		},
+	};
 
 	Object.keys(tasks).forEach((key) => {
 		localStorage.setItem(key, JSON.stringify(tasks[key]));

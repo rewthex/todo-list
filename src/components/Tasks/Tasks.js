@@ -8,6 +8,7 @@ import {
 
 export function createTasks() {
 	document.addEventListener('categoryFilter', handleCategoryChange);
+	document.addEventListener('taskAdded', renderTasks);
 	renderTasks();
 }
 

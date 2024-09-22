@@ -6,8 +6,18 @@
 }
 
 .task-dialog {
+    background-color: aliceblue;
     justify-self: center;
     align-self: center;
     width: 400px;
     height: 400px;
+}
+
+.task-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-task-button {
+    
 }

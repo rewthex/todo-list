@@ -7,12 +7,8 @@ import { createTasks } from './components/Tasks/Tasks';
 import { createAddTask } from './components/AddTask/AddTask';
 
 const initialRender = () => {
-	document.body.append(
-		createSidebar(),
-		createHeader(),
-		createTasks(),
-		createAddTask()
-	);
+	document.body.append(createSidebar(), createHeader(), createAddTask());
+	createTasks();
 };
 
 initialRender();

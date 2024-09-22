@@ -11,6 +11,7 @@ export function createTask(index, task) {
 	const { title, description, dueDate, priority } = task;
 	const taskDiv = createElement('div', 'task');
 	taskDiv.classList.add(`task-${index}`);
+	taskDiv.classList.add(`${priority.toLowerCase()}-priority`)
 
 	const taskTitle = createElement('h2', 'task-title', title);
 	const taskDescription = createElement('p', 'task-description', description);

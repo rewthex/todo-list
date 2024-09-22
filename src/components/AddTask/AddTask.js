@@ -18,6 +18,7 @@ export function createAddTask() {
 
 function createTaskDialog() {
 	const taskDialog = createElement('dialog', 'task-dialog');
+
 	const taskForm = createForm();
 
 	taskDialog.append(taskForm);
@@ -25,7 +26,14 @@ function createTaskDialog() {
 	return taskDialog;
 }
 
+function closeTaskDialog(e) {
+	e.stopPropagation();
+	const taskDialog = document.querySelector('dialog');
+	taskDialog.close();
+}
+
 function addTask(e) {
+	e.preventDefault();
 	e.stopPropagation();
 
 	const taskForm = document.querySelector('.task-form');
@@ -47,9 +55,9 @@ function addTask(e) {
 
 		const event = new CustomEvent('taskAdded');
 		document.dispatchEvent(event);
-	
-		const taskDialog = document.querySelector('dialog');
-		taskDialog.close();
+
+		closeTaskDialog();
+		taskForm.reset();
 	}
 }
 
@@ -65,9 +73,17 @@ function createForm() {
 	const form = document.createElement('form');
 	form.classList.add('task-form');
 
-	const titleLabel = document.createElement('label');
-	titleLabel.textContent = 'Title';
-	titleLabel.setAttribute('for', 'task-title');
+	function createFormGroup(labelText, inputElement) {
+		const formGroup = document.createElement('div');
+		formGroup.classList.add('form-group');
+
+		const label = document.createElement('label');
+		label.textContent = labelText;
+		label.setAttribute('for', inputElement.id);
+
+		formGroup.append(label, inputElement);
+		return formGroup;
+	}
 
 	const titleInput = document.createElement('input');
 	titleInput.type = 'text';
@@ -75,37 +91,21 @@ function createForm() {
 	titleInput.name = 'title';
 	titleInput.required = true;
 
-	const descLabel = document.createElement('label');
-	descLabel.textContent = 'Description';
-	descLabel.setAttribute('for', 'task-desc');
-
 	const descInput = document.createElement('textarea');
 	descInput.id = 'task-desc';
 	descInput.name = 'description';
 	descInput.required = true;
-
-	const categoryLabel = document.createElement('label');
-	categoryLabel.textContent = 'Category';
-	categoryLabel.setAttribute('for', 'task-desc');
 
 	const categoryInput = document.createElement('input');
 	categoryInput.id = 'task-category';
 	categoryInput.name = 'category';
 	categoryInput.required = true;
 
-	const dueDateLabel = document.createElement('label');
-	dueDateLabel.textContent = 'Due Date';
-	dueDateLabel.setAttribute('for', 'task-due-date');
-
 	const dueDateInput = document.createElement('input');
 	dueDateInput.type = 'date';
 	dueDateInput.id = 'task-due-date';
 	dueDateInput.name = 'dueDate';
 	dueDateInput.required = true;
-
-	const priorityLabel = document.createElement('label');
-	priorityLabel.textContent = 'Priority';
-	priorityLabel.setAttribute('for', 'task-priority');
 
 	const prioritySelect = document.createElement('select');
 	prioritySelect.id = 'task-priority';
@@ -125,21 +125,26 @@ function createForm() {
 
 	prioritySelect.append(optionGreen, optionYellow, optionRed);
 
-	const addTaskButton = createElement('button', 'add-task-button', 'Add Task');
+	const addTaskButton = document.createElement('button');
+	addTaskButton.type = 'button';
+	addTaskButton.classList.add('add-task-button');
+	addTaskButton.textContent = 'Add Task';
 	addTaskButton.addEventListener('click', addTask);
 
+	const cancelButton = document.createElement('button');
+	cancelButton.type = 'button';
+	cancelButton.classList.add('cancel-button');
+	cancelButton.textContent = 'Cancel';
+	cancelButton.addEventListener('click', closeTaskDialog);
+
 	form.append(
-		titleLabel,
-		titleInput,
-		descLabel,
-		descInput,
-		categoryLabel,
-		categoryInput,
-		dueDateLabel,
-		dueDateInput,
-		priorityLabel,
-		prioritySelect,
-		addTaskButton
+		createFormGroup('Title', titleInput),
+		createFormGroup('Description', descInput),
+		createFormGroup('Category', categoryInput),
+		createFormGroup('Due Date', dueDateInput),
+		createFormGroup('Priority', prioritySelect),
+		addTaskButton,
+		cancelButton
 	);
 
 	return form;

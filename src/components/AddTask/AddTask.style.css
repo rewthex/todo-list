@@ -9,18 +9,45 @@
     justify-self: center;
     align-self: center;
     width: 400px;
-    height: 400px;
+    height: 410px;
 }
 
 .task-form {
+    height: 100%;
     display: flex;
+    gap: 10px;
     flex-direction: column;
     justify-content: space-between;
 }
 
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
 .add-task-button {
     background-color: #2196f3;
+    margin-top: 8px;
     color: white;
+    padding: 8px;
     width: 100%;
     text-align: center;
+}
+
+.cancel-button {
+    width: 100%;
+    background-color: rgb(219, 19, 19);
+    margin-top: 8px;
+    padding: 8px;
+    color: white;
+    text-align: center;
+}
+
+label {
+    display: block;
+}
+
+input, textarea, select {
+    width: 100%;
 }

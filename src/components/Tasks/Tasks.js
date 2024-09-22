@@ -8,7 +8,7 @@ import {
 
 export function createTasks() {
 	document.addEventListener('categoryFilter', handleCategoryChange);
-	document.addEventListener('taskAdded', renderTasks);
+	document.addEventListener('taskAdded', handleTaskAdded);
 	renderTasks();
 }
 
@@ -30,6 +30,10 @@ function renderTasks(tasks = convertLocalStorageToObject(localStorage)) {
 	});
 	
 	return document.body.appendChild(taskContainer);
+}
+
+function handleTaskAdded() {
+	renderTasks();
 }
 
 function handleCategoryChange(e) {

@@ -8,11 +8,17 @@
 .task {
     display: grid;
     grid-template-rows: 1fr 1fr;
-    grid-template-columns: 3fr 1fr;
-    grid-template-areas: 'task-title       date-and-utils'
-                         'task-description date-and-utils';
+    grid-template-columns: 0.2fr 3fr 1fr;
+    grid-template-areas: 'complete-task task-title       date-and-utils'
+                         'complete-task task-description date-and-utils';
     border-radius: 5px;
     padding: 5px;
+}
+
+.complete-task {
+    max-width: 25px;
+    margin: 2px;
+    grid-area: complete-task;
 }
 
 .task-title {

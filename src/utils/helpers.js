@@ -10,20 +10,25 @@ export function createElement(type, className, innerText = '') {
 export function createTask(index, task) {
 	const { title, description, dueDate, priority } = task;
 	const taskDiv = createElement('div', 'task');
+	taskDiv.dataset.taskIndex = index;
 	taskDiv.classList.add(`task-${index}`);
 	taskDiv.classList.add(`${priority.toLowerCase()}-priority`)
+
+	const completeCheckbox = createElement('input', 'complete-task')
+	completeCheckbox.type = "checkbox"
+	completeCheckbox.dataset.taskIndex = index;
 
 	const taskTitle = createElement('h2', 'task-title', title);
 	const taskDescription = createElement('p', 'task-description', description);
 	const dueDateAndDeleteDiv = createElement('div', 'date-and-utils');
 	const taskDueDate = createElement('p', 'due-date', dueDate);
 	const trashIconDiv = createElement('div', 'delete');
-	trashIconDiv.dataset.taskIndex = index;
 	trashIconDiv.innerHTML += trashIcon;
+	trashIconDiv.dataset.taskIndex = index;
 
 	dueDateAndDeleteDiv.append(taskDueDate, trashIconDiv);
 
-	taskDiv.append(taskTitle, taskDescription, dueDateAndDeleteDiv);
+	taskDiv.append(completeCheckbox, taskTitle, taskDescription, dueDateAndDeleteDiv);
 
 	return taskDiv;
 }
@@ -64,8 +69,4 @@ export function filterTasksByCategory(category) {
 	});
 
 	return filteredTasks;
-}
-
-export function filterTasksByTime() {
-	return;
 }

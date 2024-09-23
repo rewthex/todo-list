@@ -26,9 +26,13 @@ function renderTasks(tasks = convertLocalStorageToObject(localStorage)) {
 		taskItem
 			.querySelector('.delete')
 			.addEventListener('click', handleDeleteTask);
+		taskItem
+			.querySelector('.complete-task')
+			.addEventListener('click', handleDeleteTask);
+
 		taskContainer.appendChild(taskItem);
 	});
-	
+
 	return document.body.appendChild(taskContainer);
 }
 
@@ -41,7 +45,6 @@ function handleCategoryChange(e) {
 	if (filter === 'All') {
 		return renderTasks();
 	}
-
 	const filteredTasks = filterTasksByCategory(filter);
 	renderTasks(filteredTasks);
 }

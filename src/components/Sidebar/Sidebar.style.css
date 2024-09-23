@@ -26,11 +26,6 @@ button {
     color: #2196f3
 }
 
-.time {
-    display: flex;
-    flex-direction: column;
-}
-
 .categories {
     display: flex;
     flex-direction: column;
